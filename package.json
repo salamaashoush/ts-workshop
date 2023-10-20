@@ -1,0 +1,12 @@
+{
+  "name": "ts-workshop",
+  "version": "1.0.0",
+  "description": "Advanced TypeScript Workshop",
+  "keywords": [],
+  "author": "Salama Ashoush <salamaashoush@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.2.2",
+    "prettier": "~3.0.3"
+  }
+}
