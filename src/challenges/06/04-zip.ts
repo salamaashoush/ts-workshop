@@ -9,7 +9,17 @@ import { Equal, Expect } from '../../helpers';
  * For example, `zip([1, 2], [true, false], ['a', 'b'])`
  * returns `[[1, true, 'a'], [2, false, 'b']]`.
  */
-declare function zip(...arrays: TODO): TODO;
+declare function zip<
+// Infer `Arrays` as a tuple of arrays:
+Arrays extends [any[], ...any[][]],
+>(...arrays: Arrays): UnwrapLists<Arrays>[];
+
+// This is a map loop!
+type UnwrapLists<List> =
+List extends [(infer Value)[], ...infer Rest]
+  ? [Value, ...UnwrapLists<Rest>]
+  : [];
+
 
 // DO NOT CHANGE THE CODE BELOW
 const res1 = zip([1, 2], [true, false]);

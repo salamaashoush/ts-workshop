@@ -3,18 +3,23 @@
  * called except in unreachable code branches.
  */
 
-function exhaustive(...args: TODO) {}
+function exhaustive(...args: never) {}
 
-const HOURS_PER_DAY = 24;
-// Since `HOURS_PER_DAY` is a `const`, the next
-// condition can never happen
-// ✅
-if (HOURS_PER_DAY !== 24) exhaustive(HOURS_PER_DAY);
+function s(){
+  const HOURS_PER_DAY = 24;
+  // Since `HOURS_PER_DAY` is a `const`, the next
+  // condition can never happen
+  // ✅
+  if (HOURS_PER_DAY !== 24){
+    exhaustive(HOURS_PER_DAY);
+  }
+  
+  // Outside of the condition, this should
+  // return a type error.
+  // @ts-expect-error ❌
+  exhaustive(HOURS_PER_DAY);
+}
 
-// Outside of the condition, this should
-// return a type error.
-// @ts-expect-error ❌
-exhaustive(HOURS_PER_DAY);
 
 const exhautiveCheck = (input: 1 | 2) => {
   switch (input) {

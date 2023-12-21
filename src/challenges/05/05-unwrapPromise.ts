@@ -4,7 +4,7 @@ import { Equal, Expect } from '../../helpers';
  * implement a generic to extract the
  * type parameter of a Promise.
  */
-type UnwrapPromise<Input> = TODO;
+type UnwrapPromise<Input> = Input extends Promise<infer V> ? V : Input;
 
 // DO NOT CHANGE THE CODE BELOW
 type res1 = UnwrapPromise<Promise<'Hello'>>;

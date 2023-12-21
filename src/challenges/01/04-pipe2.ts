@@ -6,11 +6,11 @@ import { Equal, Expect } from "../../helpers";
  * result in `f2(f1(x))`. Make it generic!
  */
 
-function pipe2(
-  x: TODO,
-  f1: (value: TODO) => TODO,
-  f2: (value: TODO) => TODO,
-): TODO {
+function pipe2<A, B, C>(
+  x: A,
+  f1: (value: A) => B,
+  f2: (value: B) => C
+): C {
   return f2(f1(x));
 }
 

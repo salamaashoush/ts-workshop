@@ -11,7 +11,11 @@ declare function assign<
 Objects extends [{}, ...{}[]]
 >(...objects: Objects): AssignAll<Objects>;
 
-type AssignAll<Tuple> = TODO
+// This is a "reduce" loop!
+type AssignAll<Tuple, Output = {}> =
+Tuple extends [infer First, ...infer Rest]
+  ? AssignAll<Rest, Output & First>
+  : Output;
 
 // DO NOT CHANGE THE CODE BELOW
 // Two objects

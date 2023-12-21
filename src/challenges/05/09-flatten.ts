@@ -5,7 +5,12 @@
  * one level of nesting. Make it generic!
  */
 
-type Flatten<Arr extends any[]> = TODO;
+import { Equal, Expect } from "../../helpers";
+
+type Flatten<Arr extends any[]> =
+    Arr extends (infer Item)[][]
+      ? Item[]
+      : Arr;
 
 function flatten<A extends any[]>(arrayOfArrays: A): Flatten<A> {
   return arrayOfArrays.reduce((acc, item) => [...acc, ...(Array.isArray(item) ? item : [item])], []);

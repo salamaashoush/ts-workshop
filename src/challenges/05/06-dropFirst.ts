@@ -5,7 +5,9 @@ import { Equal, Expect } from '../../helpers';
  * element of a tuple and returns all other
  * elements.
  */
-type DropFirst<Tuple extends any[]> = TODO;
+type DropFirst<Tuple extends any[]> = Tuple extends [any, ...infer Rest]
+? Rest
+: [];
 
 // DO NOT CHANGE THE CODE BELOW
 type res1 = DropFirst<[1, 2, 3]>;

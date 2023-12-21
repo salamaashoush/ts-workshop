@@ -2,7 +2,7 @@
  * Create a generic `NonEmptyArray` type that represents
  * Arrays that contain at least one element.
  */
-type NonEmptyArray<T> = TODO;
+type NonEmptyArray<T> = [T,...T[]];
 
 function sendMail(addresses: NonEmptyArray<string>) {
   /* ... */

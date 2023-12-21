@@ -3,7 +3,7 @@ import { Equal, Expect } from "../../helpers";
  * `map` transforms all values in an array to a value of
  * different type. Make it generic!
  */
-function map(array: TODO[], fn: (value: TODO) => TODO): TODO[] {
+function map<T,R>(array: T[], fn: (value: T) => R): R[] {
   return array.map(fn);
 }
 

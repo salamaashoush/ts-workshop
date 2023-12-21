@@ -8,8 +8,13 @@ import { Equal, Expect } from '../../helpers';
  * Hint: you will need to use T["length"]
  * to generate indices
  */
-type WithIndex<Tuple extends any[], Output extends any[] = []> = TODO;
-
+type WithIndex<
+Tuple extends any[],
+Output extends any[] = []
+> = 
+Tuple extends [infer First, ...infer Rest]
+? WithIndex<Rest, [...Output, [First, Output['length']]]>
+: Output
 // DO NOT CHANGE THE CODE BELOW
 type res1 = WithIndex<['a']>;
 type test1 = Expect<Equal<res1, [['a', 0]]>>;

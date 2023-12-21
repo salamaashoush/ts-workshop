@@ -9,7 +9,16 @@ import { Equal, Expect } from '../../helpers';
  * Hint: you will need to use T["length"]
  * to read the length of a tuple `T`.
  */
-type Take<Tuple extends any[], N, Output extends any[] = []> = TODO;
+type Take<
+Tuple extends any[],
+N,
+Output extends any[] = []
+> = 
+Output['length'] extends N
+? Output
+: Tuple extends [infer First, ...infer Rest]
+? Take<Rest, N, [...Output, First]>
+: Output
 
 // DO NOT CHANGE THE CODE BELOW
 type res1 = Take<[1, 2, 3], 2>;

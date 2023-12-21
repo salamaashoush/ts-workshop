@@ -5,7 +5,7 @@
  * use the type `Function` or `(() => void)`.
  */
 
-let debouncedFn: TODO;
+let debouncedFn: (() => void) & { cancel: () => void };
 
 debouncedFn = Object.assign(() => {}, { cancel: () => {} });
 

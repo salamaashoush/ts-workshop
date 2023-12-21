@@ -8,10 +8,15 @@ import { Equal, Expect } from '../../helpers';
 declare function all<
 // Infer `Promises` as a tuple of promises:
 Promises extends [Promise<any>, ...Promise<any>[]]
->(promises: Promises): Promise<UnwrapAll<Promises>>;
-
-type UnwrapAll<Promises> = TODO
-
+>(promises: Promises): All<Promises>;
+  // Unwrap all promises and wrap the resulting tuple type
+  // in a `Promise`:
+  type All<Promises> = Promise<UnwrapAll<Promises>>;
+  // This is a "map" loop!
+  type UnwrapAll<Promises> = 
+    Promises extends [Promise<infer Value>, ...infer Rest]
+      ? [Value, ...UnwrapAll<Rest>]
+      : []
 // DO NOT CHANGE THE CODE BELOW
 // Two promises
 const res1 = all([Promise.resolve(20), Promise.resolve('Hello' as const)]);
