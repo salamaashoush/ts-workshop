@@ -36,8 +36,9 @@ const nonExhaustiveCheck = (input: 1 | 2) => {
       return '!';
     // the case where input === 2 isn't handled,
     // so `exhaustive` shouldn't be called.
-    // @ts-expect-error ❌
+
     default:
+      // @ts-expect-error ❌
       exhaustive(input);
   }
 };
