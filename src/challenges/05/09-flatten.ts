@@ -1,3 +1,5 @@
+import { Equal, Expect } from '../../helpers';
+
 /**
  * The `flatten` function can take arrays of values,
  * Or arrays containing other arrays.
